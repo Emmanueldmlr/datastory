@@ -1,0 +1,1 @@
+export const graphqlUrl = "https://datastory-prod.hasura.app/v1/graphql"

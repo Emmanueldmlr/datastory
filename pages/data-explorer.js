@@ -1,6 +1,7 @@
 import { Box, Container, Text, Heading, VStack} from '@chakra-ui/react'
 import React from 'react'
 import DataView from '@components/Chart/DataView'
+import { store } from 'store/store'
 
 const DataExplorer = () => {
   return (

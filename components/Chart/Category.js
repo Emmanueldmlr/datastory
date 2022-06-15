@@ -18,7 +18,7 @@ const ActiveCountry = () => {
     dispatch(updateCategories(updatedCategories))
   }
   return (
-    <Stack spacing={[1, 6]} direction={['column', 'row']}>
+    <Stack pr={6} spacing={[1, 6]} direction={['column', 'row']}>
         {
           categories && categories.map(category => (
             <Checkbox onChange={()=>handleChange(category.id, category.isSelected)} size='md' key={category.id} colorScheme='green' isChecked={category.isSelected}>

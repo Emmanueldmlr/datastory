@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { dataApi } from 'services/data'
+import { measureApi } from 'services/measure'
 import categorySlice from './slices/category-slice'
-import dataSlice from './slices/data-slice'
-import measureSlice from './slices/measure-slice'
 
 export const store = configureStore({
   reducer: {
     category: categorySlice,
-    measure: measureSlice,
-    data: dataSlice
+    [measureApi.reducerPath]: measureApi.reducer,
+    [dataApi.reducerPath]: dataApi.reducer
   },
+  middleware: gDM => 
+  gDM({ serializableCheck: true })
+  .concat(measureApi.middleware)
 })
+

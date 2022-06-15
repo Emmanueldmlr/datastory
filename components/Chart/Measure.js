@@ -1,14 +1,17 @@
 import React from 'react'
 import {Box, Select} from '@chakra-ui/react'
+import { useGetMeasuresQuery } from 'services/measure'
 
-const Measure = () => {
-
+const Measure = ({setSelectedMeasure, selectedMeasure}) => {
+  const {data} = useGetMeasuresQuery()
   return (
-    <Box w="full">
-        <Select size='md' borderColor="gray" placeholder='Select Measure'>
-            <option value='option1'>Option 1</option>
-            <option value='option2'>Option 2</option>
-            <option value='option3'>Option 3</option>
+    <Box w="full" pb={{base:10, lg:0}}>
+        <Select value={selectedMeasure} onChange={(e)=>setSelectedMeasure(e.target.value)} size='md' borderColor="gray">
+            {
+              data && data.cube_country_year.map((dt) => (
+                <option value={dt.measure} >{dt.entity_by_measure.triple_by_subject[0].i18n.en}</option>
+              ))
+            }
         </Select>
     </Box>
   )
